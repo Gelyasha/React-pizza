@@ -1,25 +1,23 @@
 import React, { FC, useState } from "react";
 import PizzaCountButton from "./PizzaCountButton";
+import { TPizza } from "../../types/types";
 
 interface IProps {
-    title?: string,
-    price?: number,
+    pizza: TPizza
 };
 
-
-
 const PizzaItem: FC<IProps> = ({
-    title,
-    price,
+    pizza
 }) => {
+
     return (
         <div className="pizza-block">
             <img
                 className="pizza-block__image"
-                src="https://dodopizza-a.akamaihd.net/static/Img/Products/Pizza/ru-RU/b750f576-4a83-48e6-a283-5a8efb68c35d.jpg"
                 alt="Pizza"
+                src={pizza.imageUrl}
             />
-            <h4 className="pizza-block__title">{title}</h4>
+            <h4 className="pizza-block__title">{pizza.title}</h4>
 
             <div className="pizza-block__selector">
                 <ul>
@@ -30,11 +28,12 @@ const PizzaItem: FC<IProps> = ({
                     <li className="active">26 см.</li>
                     <li>30 см.</li>
                     <li>40 см.</li>
+
                 </ul>
             </div>
 
             <div className="pizza-block__bottom">
-                <div className="pizza-block__price">{`${price} ₽`}</div>
+                <div className="pizza-block__price">{`${pizza.price} ₽`}</div>
                 <PizzaCountButton
                 />
             </div>
